@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문서 목록</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f0f2f5;
+            color: #1a1a2e;
+            min-height: 100vh;
+        }
+        header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #fff;
+            padding: 3rem 1.5rem;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        header p {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+        main {
+            max-width: 800px;
+            margin: -2rem auto 2rem;
+            padding: 0 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+        }
+        .card a {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            text-decoration: none;
+            color: inherit;
+        }
+        .card-icon {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: #fff;
+        }
+        .card-body h2 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        .card-body p {
+            font-size: 0.85rem;
+            color: #666;
+        }
+        .card-arrow {
+            margin-left: auto;
+            font-size: 1.2rem;
+            color: #aaa;
+            transition: color 0.2s;
+        }
+        .card:hover .card-arrow { color: #3b82f6; }
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: #999;
+        }
+        .error {
+            text-align: center;
+            padding: 2rem;
+            color: #e74c3c;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.8rem;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>문서 목록</h1>
+        <p>프로젝트 문서를 확인하세요</p>
+    </header>
+    <main id="file-list">
+        <div class="loading">문서를 불러오는 중...</div>
+    </main>
+    <footer>&copy; 2026</footer>
+
+    <script>
+        (async function () {
+            const main = document.getElementById('file-list');
+            const host = location.hostname;
+
+            // GitHub Pages: <user>.github.io 형식에서 owner/repo 추출
+            if (!host.endsWith('.github.io')) {
+                main.innerHTML = '<div class="error">GitHub Pages 환경이 아닙니다.</div>';
+                return;
+            }
+
+            const owner = host.replace('.github.io', '');
+            const repo = location.pathname.split('/')[1] || '';
+
+            if (!repo) {
+                main.innerHTML = '<div class="error">저장소 정보를 추출할 수 없습니다.</div>';
+                return;
+            }
+
+            try {
+                const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/docs`;
+                const res = await fetch(apiUrl);
+
+                if (!res.ok) throw new Error(`API 오류: ${res.status}`);
+
+                const files = await res.json();
+                const htmlFiles = files
+                    .filter(f => f.name.endsWith('.html') && f.name !== 'index.html')
+                    .sort((a, b) => a.name.localeCompare(b.name, 'ko'));
+
+                if (htmlFiles.length === 0) {
+                    main.innerHTML = '<div class="error">HTML 문서가 없습니다.</div>';
+                    return;
+                }
+
+                main.innerHTML = htmlFiles.map(file => {
+                    const displayName = decodeURIComponent(file.name)
+                        .replace(/\.html$/, '')
+                        .replace(/_/g, ' ');
+                    const encodedName = encodeURIComponent(file.name);
+
+                    return `
+                        <div class="card">
+                            <a href="${encodedName}">
+                                <div class="card-icon">&#128196;</div>
+                                <div class="card-body">
+                                    <h2>${displayName}</h2>
+                                    <p>${file.name}</p>
+                                </div>
+                                <div class="card-arrow">&#8250;</div>
+                            </a>
+                        </div>`;
+                }).join('');
+
+            } catch (err) {
+                main.innerHTML = `<div class="error">파일 목록을 불러올 수 없습니다.<br><small>${err.message}</small></div>`;
+            }
+        })();
+    </script>
+</body>
+</html>
