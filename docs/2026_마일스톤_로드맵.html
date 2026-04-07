@@ -347,9 +347,9 @@
         </tr>
         <tr>
           <td>수거 서비스 런칭</td>
-          <td></td><td></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-service">6월</div></td>
-          <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+          <td></td>
+          <td class="gantt-cell"><div class="gantt-bar bar-service">5월</div></td>
+          <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
         </tr>
         <tr>
           <td>서비스 인프라 구축</td>
@@ -379,6 +379,12 @@
           <td></td><td></td><td></td><td></td>
           <td class="gantt-cell" colspan="2"><div class="gantt-bar bar-service">8~9월</div></td>
           <td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td>맵리스 주행 고도화</td>
+          <td></td><td></td><td></td><td></td>
+          <td class="gantt-cell"><div class="gantt-bar bar-ilgaemi">8월</div></td>
+          <td></td><td></td><td></td><td></td><td></td>
         </tr>
         <tr>
           <td>차도/이면도로 자율주행</td>
@@ -420,6 +426,12 @@
           <td>플랫폼 확장</td>
           <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
           <td class="gantt-cell"><div class="gantt-bar bar-infra">11월</div></td>
+          <td></td><td></td>
+        </tr>
+        <tr>
+          <td>공용 충전 스테이션</td>
+          <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+          <td class="gantt-cell"><div class="gantt-bar bar-ilgaemi">11월</div></td>
           <td></td><td></td>
         </tr>
         <tr>
@@ -647,14 +659,14 @@
       <!-- FMS / 관제 고도화 -->
       <div class="ms-card cat-infra">
         <div class="ms-header">
-          <div class="ms-title">FMS / 관제 고도화</div>
+          <div class="ms-title">FMS / 관제 고도화(배차엔진)</div>
           <span class="ms-month q2">6월</span>
         </div>
         <div class="ms-tags"><span class="ms-tag" style="background:var(--c-infra-bg);color:var(--c-infra)">인프라</span></div>
         <ul class="ms-items">
           <li>관제 Joystick 안정화, 온라인 파라미터 관리</li>
           <li>서버 무중단 배포</li>
-          <li>배차 엔진 도입, 유휴 시간 서브잡 자동 배정</li>
+          <li>배차 엔진 도입, 유휴 시간 서브잡 자동 배정비교</li>
           <li>로봇 상태 기반 대시보드</li>
           <li>FMS 에러 알림 시인성/접근성 개선</li>
           <li>관제 주행 편의성 1차 피드백 반영 <span style="color:#dc2626;font-weight:600;font-size:0.78rem">신규</span></li>
@@ -678,13 +690,15 @@
       <div class="ms-card cat-service">
         <div class="ms-header">
           <div class="ms-title">수거 서비스 런칭</div>
-          <span class="ms-month q2">6월</span>
+          <span class="ms-month q2">5월</span>
         </div>
         <div class="ms-tags"><span class="ms-tag tag-service">서비스</span></div>
         <ul class="ms-items">
-          <li>엠밸리4단지 (덤프형 4대 + 배달형 2대)</li>
-          <li>덤프형 태스크: 호출 &rarr; 이동 &rarr; 적재 &rarr; 덤프 &rarr; 복귀</li>
-          <li>수거 호출 앱 UI 구현</li>
+          <li>엠밸리4단지 수거 서비스 시작 (덤프형 4대 + 배달형 2대)</li>
+          <li>덤프형 태스크: 호출 수신 &rarr; 집 앞 이동 &rarr; 적재 &rarr; 이동 &rarr; 쓰레기장 덤프 &rarr; 복귀</li>
+          <li>수거 호출 앱 UI 구현(사용자 인증)</li>
+          <li>(옵션) 리프트</li>
+          <li>4세대 덤프형</li>
         </ul>
       </div>
 
@@ -739,6 +753,18 @@
           <li>앱 개발: 배송 요청/추적/수령/결제 (7~8월)</li>
           <li>시간 예약 + 실시간 호출 배차 로직</li>
           <li>시범 사이트 베타 서비스 (중고거래/소형화물)</li>
+        </ul>
+      </div>
+
+      <!-- 맵리스 주행 고도화 -->
+      <div class="ms-card cat-ilgaemi">
+        <div class="ms-header">
+          <div class="ms-title">맵리스 주행 고도화</div>
+          <span class="ms-month q3">8월</span>
+        </div>
+        <div class="ms-tags"><span class="ms-tag tag-ilgaemi">일개미</span></div>
+        <ul class="ms-items">
+          <li>횡단보도 등 위험 구역에서 자율주행 기능 지원</li>
         </ul>
       </div>
 
@@ -856,6 +882,7 @@
         </div>
         <div class="ms-tags"><span class="ms-tag tag-ilgaemi">일개미</span></div>
         <ul class="ms-items">
+          <li>자동 배출 카고 모델 출시</li>
           <li>배출 메카니즘 연동 및 태스크 시퀀스 통합</li>
         </ul>
       </div>
@@ -871,6 +898,19 @@
           <li>500대 이상 동시 연결 확장</li>
           <li>서드파티 API 고도화</li>
           <li>온프레미스 배포 (지자체/스마트시티)</li>
+        </ul>
+      </div>
+
+      <!-- 공용 충전 스테이션 -->
+      <div class="ms-card cat-ilgaemi">
+        <div class="ms-header">
+          <div class="ms-title">공용 충전 스테이션</div>
+          <span class="ms-month q4">11월</span>
+        </div>
+        <div class="ms-tags"><span class="ms-tag tag-ilgaemi">일개미</span></div>
+        <ul class="ms-items">
+          <li>공용 충전 스테이션 개발</li>
+          <li>일개미 5세대 충전부 파생 제품(공용 충전 스테이션용)</li>
         </ul>
       </div>
 
