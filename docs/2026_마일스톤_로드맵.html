@@ -296,7 +296,7 @@
       <h3><span class="tag tag-jipgaemi">집개미 TF</span></h3>
       <ul>
         <li>서비스 안정성 및 운영 효율 극대화</li>
-        <li>HW 개선 (ZED 카메라, 케이블 구조) 및 SW 고도화 (위치 추정, 층인식, 태스크 통합)</li>
+        <li>HW 개선(ZED 카메라 교체, 케이블 구조 개선) 및 SW 고도화(위치 추정, 층인식, 태스크 통합)</li>
       </ul>
     </div>
   </div>
@@ -328,7 +328,7 @@
           <td>도입 시간(RDT) &lt; 2h <span class="team-tag">플래닝</span></td>
         </tr>
         <tr><td>지도 제작(MGAT) &lt; 3h/km <span class="team-tag">플래닝</span><span class="team-tag">퍼셉션</span></td></tr>
-        <tr><td>파이프라인 자동화율 &gt; 90% <span class="team-tag">퍼셉션</span></td></tr>
+        <tr><td>학습 파이프라인 자동화율 &gt; 90% <span class="team-tag">퍼셉션</span></td></tr>
         <tr><td>첫 주문 전환율 50% [소셜 로그인 도입] <span class="team-tag">커넥터</span></td></tr>
         <tr><td>부하 테스트 동시접속 1,000대 / 주문 매칭 성공률 98% <span class="team-tag">커넥터</span></td></tr>
         <tr>
@@ -344,7 +344,7 @@
           <td>리소스 사용량 15% 개선 <span class="team-tag">퍼셉션</span></td>
         </tr>
         <tr><td>조리 시간 맞춤 배차 &lt; 대기시간 50% 감소 <span class="team-tag">커넥터</span></td></tr>
-        <tr><td>태스크 전환 딜레이 0 <span class="team-tag">인티그레이션</span></td></tr>
+        <tr><td>태스크 실패 복구 시간(TRT) &lt; 30s <span class="team-tag">인티그레이션</span></td></tr>
         <tr><td>평균 주행 속도 25% 향상 [0.8m/s &rarr; 1.0m/s] <span class="team-tag">플래닝</span></td></tr>
         <tr>
           <td rowspan="2" class="kpi-result">고부가 서비스 기술 준비도 100%<br><small style="color:var(--gray-500)">(광고 서비스 상용화)</small></td>
@@ -387,7 +387,7 @@
           <tr><td>5세대 양산</td><td>MTBF (평균 고장 간격)</td><td><strong>&gt; 2,500h</strong></td><td><span class="month-badge q4">Q4</span></td></tr>
           <tr><td rowspan="4">로봇 도입 속도 3배 가속</td><td>로봇 도입 시간 (RDT)</td><td><strong>&lt; 2h</strong></td><td><span class="month-badge q3">Q3</span></td></tr>
           <tr><td>지도 제작 (MGAT)</td><td><strong>&lt; 3h/km</strong></td><td><span class="month-badge q4">Q4</span></td></tr>
-          <tr><td>파이프라인 자동화율</td><td><strong>&gt; 90%</strong></td><td><span class="month-badge q4">Q4</span></td></tr>
+          <tr><td>학습 파이프라인 자동화율</td><td><strong>&gt; 90%</strong></td><td><span class="month-badge q4">Q4</span></td></tr>
           <tr><td>첫 주문 전환율</td><td><strong>50%</strong></td><td><span class="month-badge q2">Q2</span></td></tr>
           <tr><td rowspan="3">협력사 로봇 도입 지원</td><td>동시접속 / 주문 매칭 성공률</td><td><strong>1,000대 / 98%</strong></td><td><span class="month-badge q1">Q1</span></td></tr>
           <tr><td>파트너 로봇 도입 시간 (RDT)</td><td><strong>&lt; 8h</strong></td><td><span class="month-badge">연간</span></td></tr>
@@ -650,6 +650,7 @@
           <li><s>Gaemi Triage Acuity System 적용</s></li>
           <li>이기종 데이터 파이프라인: 월 6사이트 이상 학습/배포 체계</li>
           <li>오픈형 모델 개발 완료 (4월 말)</li>
+          <li>로봇 환경 마이그레이션 <span class="new-badge">신규</span></li>
         </ul>
       </div>
 
@@ -762,7 +763,7 @@
         <ul class="ms-items">
           <li>Gaemi Admin: 서비스 지역 생성 API, 점주 셀프 등록</li>
           <li>Gaemi POS</li>
-          <li>500대 동시 연결</li>
+          <li>개미 서버 인프라 구축: 500대 동시 연결 지원</li>
         </ul>
       </div>
 
@@ -780,6 +781,7 @@
           <li>매니퓰레이터 모션 플래닝 (장애물 회피)</li>
           <li>엘리베이터 층인식 개선 (기압 센서)</li>
           <li>태스크 구조 통합: JI/TI &rarr; 단일 인터페이스</li>
+          <li>시스템 구조 개선</li>
         </ul>
       </div>
 
