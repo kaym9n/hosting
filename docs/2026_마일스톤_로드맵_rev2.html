@@ -1,0 +1,2409 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2026 개발 마일스톤 로드맵 (rev2)</title>
+  <style>
+    :root {
+      --c-ilgaemi: #3b82f6;
+      --c-ilgaemi-bg: #eff6ff;
+      --c-service: #10b981;
+      --c-service-bg: #ecfdf5;
+      --c-jipgaemi: #f59e0b;
+      --c-jipgaemi-bg: #fffbeb;
+      --c-infra: #8b5cf6;
+      --c-infra-bg: #f5f3ff;
+      --c-overseas: #ec4899;
+      --c-overseas-bg: #fdf2f8;
+      --c-done: #9ca3af;
+      --c-done-bg: #f3f4f6;
+      --c-delay: #f97316;
+      --c-delay-bg: #fff7ed;
+      --c-new: #dc2626;
+      --c-new-bg: #fef2f2;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+      --gray-400: #9ca3af;
+      --gray-500: #6b7280;
+      --gray-600: #4b5563;
+      --gray-700: #374151;
+      --gray-800: #1f2937;
+      --gray-900: #111827;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--gray-50);
+      color: var(--gray-800);
+      line-height: 1.6;
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+      color: white;
+      padding: 48px 0 40px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .header p {
+      color: #94a3b8;
+      margin-top: 8px;
+      font-size: 1.05rem;
+    }
+
+    .header .date {
+      color: #64748b;
+      font-size: 0.85rem;
+      margin-top: 12px;
+    }
+
+    .header .terms {
+      margin-top: 18px;
+      font-size: 0.82rem;
+      color: #cbd5e1;
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .header .terms strong {
+      color: white;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Navigation */
+    .nav-bar {
+      background: white;
+      border-bottom: 1px solid var(--gray-200);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-bar .container {
+      display: flex;
+      gap: 4px;
+      padding-top: 0;
+      padding-bottom: 0;
+      overflow-x: auto;
+    }
+
+    .nav-link {
+      padding: 14px 16px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--gray-500);
+      text-decoration: none;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+    }
+
+    .nav-link:hover {
+      color: var(--gray-800);
+      border-bottom-color: var(--gray-300);
+    }
+
+    .nav-link.active {
+      color: var(--c-ilgaemi);
+      border-bottom-color: var(--c-ilgaemi);
+    }
+
+    /* Section */
+    .section {
+      padding: 48px 0;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-desc {
+      color: var(--gray-500);
+      margin-bottom: 32px;
+      font-size: 0.95rem;
+    }
+
+    /* Goals */
+    .goals-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .goal-card {
+      background: white;
+      border-radius: 12px;
+      padding: 28px;
+      border: 1px solid var(--gray-200);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    .goal-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .goal-card .tag {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .tag-ilgaemi {
+      background: var(--c-ilgaemi-bg);
+      color: var(--c-ilgaemi);
+    }
+
+    .tag-service {
+      background: var(--c-service-bg);
+      color: var(--c-service);
+    }
+
+    .tag-jipgaemi {
+      background: var(--c-jipgaemi-bg);
+      color: var(--c-jipgaemi);
+    }
+
+    .tag-overseas {
+      background: var(--c-overseas-bg);
+      color: var(--c-overseas);
+    }
+
+    .goal-card ul {
+      list-style: none;
+    }
+
+    .goal-card li {
+      padding: 6px 0;
+      font-size: 0.9rem;
+      color: var(--gray-600);
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .goal-card li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 14px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+    }
+
+    .goal-card.ilgaemi li::before {
+      background: var(--c-ilgaemi);
+    }
+
+    .goal-card.service li::before {
+      background: var(--c-service);
+    }
+
+    .goal-card.jipgaemi li::before {
+      background: var(--c-jipgaemi);
+    }
+
+    .goal-card.overseas li::before {
+      background: var(--c-overseas);
+    }
+
+    /* KPI Tables */
+    .kpi-wrapper {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--gray-200);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    .kpi-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+
+    .kpi-table thead {
+      background: var(--gray-800);
+      color: white;
+    }
+
+    .kpi-table th {
+      padding: 14px 16px;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    .kpi-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--gray-100);
+      vertical-align: top;
+    }
+
+    .kpi-table tbody tr:hover {
+      background: var(--gray-50);
+    }
+
+    .kpi-table .month-badge {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      background: var(--gray-100);
+      color: var(--gray-600);
+    }
+
+    .kpi-table .month-badge.q1 {
+      background: #fce7f3;
+      color: #db2777;
+    }
+
+    .kpi-table .month-badge.q2 {
+      background: #dbeafe;
+      color: #2563eb;
+    }
+
+    .kpi-table .month-badge.q3 {
+      background: #dcfce7;
+      color: #16a34a;
+    }
+
+    .kpi-table .month-badge.q4 {
+      background: #fef3c7;
+      color: #d97706;
+    }
+
+    .kpi-group-header td {
+      background: var(--gray-50);
+      font-weight: 700;
+      color: var(--gray-700);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .kpi-note {
+      margin-top: 16px;
+      padding: 16px 20px;
+      background: var(--gray-50);
+      border-left: 3px solid var(--gray-300);
+      border-radius: 6px;
+      font-size: 0.85rem;
+      color: var(--gray-600);
+    }
+
+    .kpi-note ul {
+      list-style: none;
+    }
+
+    .kpi-note li {
+      padding: 3px 0;
+      padding-left: 14px;
+      position: relative;
+    }
+
+    .kpi-note li::before {
+      content: '·';
+      position: absolute;
+      left: 0;
+      color: var(--gray-400);
+      font-weight: 700;
+    }
+
+    .kpi-note strong {
+      color: var(--gray-800);
+    }
+
+    /* Biz KPI */
+    .biz-kpi-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+
+    .biz-kpi-table thead {
+      background: var(--gray-800);
+      color: white;
+    }
+
+    .biz-kpi-table th {
+      padding: 14px 16px;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    .biz-kpi-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--gray-100);
+      vertical-align: top;
+    }
+
+    .biz-kpi-table tbody tr:hover {
+      background: var(--gray-50);
+    }
+
+    .biz-kpi-table .biz-category {
+      background: var(--gray-50);
+      font-weight: 700;
+      color: var(--gray-700);
+      font-size: 0.9rem;
+      letter-spacing: 0.3px;
+    }
+
+    .biz-kpi-table .kpi-result {
+      font-weight: 600;
+      color: var(--gray-800);
+    }
+
+    .biz-kpi-table .team-tag {
+      display: inline-block;
+      padding: 1px 7px;
+      border-radius: 8px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      margin-left: 4px;
+      background: var(--gray-100);
+      color: var(--gray-500);
+    }
+
+    /* Gantt */
+    .gantt-wrapper {
+      background: white;
+      border-radius: 12px;
+      padding: 32px;
+      border: 1px solid var(--gray-200);
+      overflow-x: auto;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    .gantt-table {
+      width: 100%;
+      min-width: 900px;
+      border-collapse: collapse;
+    }
+
+    .gantt-table th {
+      padding: 10px 8px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-align: center;
+      color: var(--gray-500);
+      border-bottom: 2px solid var(--gray-200);
+    }
+
+    .gantt-table th:first-child {
+      text-align: left;
+      min-width: 240px;
+    }
+
+    .gantt-table td {
+      padding: 6px 4px;
+      vertical-align: middle;
+    }
+
+    .gantt-table td:first-child {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--gray-700);
+      padding-right: 16px;
+      white-space: nowrap;
+    }
+
+    .gantt-table tbody tr {
+      border-bottom: 1px solid var(--gray-50);
+    }
+
+    .gantt-table tbody tr:hover {
+      background: var(--gray-50);
+    }
+
+    .gantt-table tr.new-row td:first-child {
+      background: var(--c-new-bg);
+      border-left: 3px solid var(--c-new);
+    }
+
+    .gantt-bar {
+      height: 24px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: white;
+      min-width: 100%;
+    }
+
+    .bar-ilgaemi {
+      background: linear-gradient(90deg, #3b82f6, #60a5fa);
+    }
+
+    .bar-service {
+      background: linear-gradient(90deg, #10b981, #34d399);
+    }
+
+    .bar-jipgaemi {
+      background: linear-gradient(90deg, #f59e0b, #fbbf24);
+    }
+
+    .bar-infra {
+      background: linear-gradient(90deg, #8b5cf6, #a78bfa);
+    }
+
+    .bar-overseas {
+      background: linear-gradient(90deg, #ec4899, #f472b6);
+    }
+
+    .bar-done {
+      background: linear-gradient(90deg, #9ca3af, #d1d5db);
+    }
+
+    .bar-delay {
+      background: repeating-linear-gradient(45deg, #f97316, #f97316 6px, #fdba74 6px, #fdba74 12px);
+    }
+
+    .gantt-cell {
+      text-align: center;
+    }
+
+    .tbd-bar {
+      height: 24px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--c-overseas);
+      background: repeating-linear-gradient(45deg, #fdf2f8, #fdf2f8 6px, #fce7f3 6px, #fce7f3 12px);
+      border: 1px dashed var(--c-overseas);
+    }
+
+    /* Legend */
+    .legend {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+      justify-content: center;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      color: var(--gray-600);
+    }
+
+    .legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 4px;
+    }
+
+    .legend-delay {
+      background: repeating-linear-gradient(45deg, #f97316, #f97316 3px, #fdba74 3px, #fdba74 6px);
+    }
+
+    /* Quarter group */
+    .quarter-group {
+      margin-bottom: 48px;
+    }
+
+    .quarter-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--gray-400);
+      margin-bottom: 20px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--gray-200);
+    }
+
+    .quarter-label span {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+    }
+
+    .q1-label span {
+      background: #fce7f3;
+      color: #db2777;
+    }
+
+    .q2-label span {
+      background: #dbeafe;
+      color: #2563eb;
+    }
+
+    .q3-label span {
+      background: #dcfce7;
+      color: #16a34a;
+    }
+
+    .q4-label span {
+      background: #fef3c7;
+      color: #d97706;
+    }
+
+    .q5-label span {
+      background: #fce7f3;
+      color: #db2777;
+    }
+
+    .qx-label span {
+      background: var(--c-overseas-bg);
+      color: var(--c-overseas);
+    }
+
+    /* Milestone cards */
+    .milestones-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 16px;
+    }
+
+    .ms-card {
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      border: 1px solid var(--gray-200);
+      transition: all 0.2s;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+      border-left: 4px solid var(--gray-300);
+    }
+
+    .ms-card:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transform: translateY(-1px);
+    }
+
+    .ms-card.cat-ilgaemi {
+      border-left-color: var(--c-ilgaemi);
+    }
+
+    .ms-card.cat-service {
+      border-left-color: var(--c-service);
+    }
+
+    .ms-card.cat-jipgaemi {
+      border-left-color: var(--c-jipgaemi);
+    }
+
+    .ms-card.cat-infra {
+      border-left-color: var(--c-infra);
+    }
+
+    .ms-card.cat-overseas {
+      border-left-color: var(--c-overseas);
+    }
+
+    .ms-card.done {
+      opacity: 0.55;
+      border-left-color: var(--c-done);
+    }
+
+    .ms-card.done .ms-title {
+      text-decoration: line-through;
+    }
+
+    .ms-card.is-new {
+      background: linear-gradient(180deg, var(--c-new-bg) 0%, white 60%);
+      border: 1px solid #fecaca;
+      border-left: 4px solid var(--c-new);
+    }
+
+    .ms-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+
+    .ms-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      flex: 1;
+    }
+
+    .ms-month {
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 12px;
+      white-space: nowrap;
+      margin-left: 8px;
+    }
+
+    .ms-month.q1 {
+      background: #fce7f3;
+      color: #db2777;
+    }
+
+    .ms-month.q2 {
+      background: #dbeafe;
+      color: #2563eb;
+    }
+
+    .ms-month.q3 {
+      background: #dcfce7;
+      color: #16a34a;
+    }
+
+    .ms-month.q4 {
+      background: #fef3c7;
+      color: #d97706;
+    }
+
+    .ms-month.q5 {
+      background: #fce7f3;
+      color: #db2777;
+    }
+
+    .ms-month.tbd {
+      background: var(--c-overseas-bg);
+      color: var(--c-overseas);
+    }
+
+    .ms-tags {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .ms-tag {
+      font-size: 0.72rem;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-weight: 600;
+    }
+
+    .ms-items {
+      list-style: none;
+    }
+
+    .ms-items li {
+      font-size: 0.85rem;
+      color: var(--gray-600);
+      padding: 3px 0 3px 18px;
+      position: relative;
+    }
+
+    .ms-items li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 11px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--gray-300);
+    }
+
+    .ms-items li.st-done::before {
+      background: var(--c-service);
+      width: 7px;
+      height: 7px;
+      left: -1px;
+      top: 10px;
+    }
+
+    .ms-items li.st-delay::before {
+      background: var(--c-delay);
+      width: 7px;
+      height: 7px;
+      left: -1px;
+      top: 10px;
+    }
+
+    .done-badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      background: var(--gray-200);
+      color: var(--gray-500);
+    }
+
+    .new-badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      background: var(--c-new);
+      color: white;
+      margin-left: 6px;
+      letter-spacing: 0.3px;
+    }
+
+    .delay-badge {
+      color: var(--c-delay);
+      font-weight: 600;
+      font-size: 0.78rem;
+    }
+
+    .eta-note {
+      color: var(--gray-500);
+      font-size: 0.78rem;
+      font-style: italic;
+      margin-left: 4px;
+    }
+
+    /* Q1 status review */
+    .q1-review {
+      background: white;
+      border-radius: 12px;
+      padding: 28px;
+      border: 1px solid var(--gray-200);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+      margin-bottom: 16px;
+    }
+
+    .q1-review h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+      color: var(--gray-800);
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--gray-100);
+    }
+
+    .q1-review ul {
+      list-style: none;
+    }
+
+    .q1-review li {
+      font-size: 0.88rem;
+      color: var(--gray-700);
+      padding: 6px 0 6px 28px;
+      position: relative;
+    }
+
+    .q1-review li .st {
+      position: absolute;
+      left: 0;
+      top: 6px;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-align: center;
+      line-height: 20px;
+    }
+
+    .q1-review li .st.done {
+      background: var(--c-service-bg);
+      color: var(--c-service);
+    }
+
+    .q1-review li .st.delay {
+      background: var(--c-delay-bg);
+      color: var(--c-delay);
+    }
+
+    .q1-review li .st.move {
+      background: var(--c-jipgaemi-bg);
+      color: var(--c-jipgaemi);
+    }
+
+    .q1-review li .label-delay {
+      color: var(--c-delay);
+      font-weight: 600;
+      font-size: 0.78rem;
+      margin-left: 6px;
+    }
+
+    .q1-review li .label-move {
+      color: var(--c-jipgaemi);
+      font-weight: 600;
+      font-size: 0.78rem;
+      margin-left: 6px;
+    }
+
+    .q1-status-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 16px;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 40px 0;
+      color: var(--gray-400);
+      font-size: 0.82rem;
+      border-top: 1px solid var(--gray-200);
+      margin-top: 24px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 1.5rem;
+      }
+
+      .milestones-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .goals-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        padding: 32px 0;
+      }
+    }
+
+    @media print {
+      .nav-bar {
+        display: none;
+      }
+
+      .ms-card:hover {
+        transform: none;
+        box-shadow: none;
+      }
+
+      body {
+        background: white;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="header">
+    <div class="container">
+      <h1>2026 개발 마일스톤 로드맵</h1>
+      <p>일개미 5세대 &middot; 서비스 &middot; 집개미 &middot; 해외향</p>
+      <div class="date">Updated 2026-05-15 (rev2 &mdash; 사업부 피드백 반영)</div>
+      <div class="terms"><strong>TP 완료</strong> = 개발 완료, 양산 작업 필요(Transfer to Production) &nbsp;/&nbsp; <strong>ES
+          완료</strong> = 엔지니어링 샘플 개발 완료</div>
+    </div>
+  </div>
+
+  <nav class="nav-bar">
+    <div class="container">
+      <a href="#goals" class="nav-link active">연간 목표</a>
+      <a href="#overview" class="nav-link">연간 로드맵</a>
+      <a href="#timeline" class="nav-link">마일스톤 상세</a>
+      <a href="#kpi" class="nav-link">KPI</a>
+    </div>
+  </nav>
+
+  <!-- ==================== 1. 연간 목표 ==================== -->
+  <section id="goals" class="section" style="background:white">
+    <div class="container">
+      <div class="section-title"><span class="icon">&#127919;</span> 연간 목표</div>
+      <div class="section-desc">2026년 4개 영역별 핵심 목표</div>
+      <div class="goals-grid">
+        <div class="goal-card ilgaemi">
+          <h3><span class="tag tag-ilgaemi">일개미 5세대</span></h3>
+          <ul>
+            <li>5세대 로봇 TP 완료 및 실외 배송 서비스 상용화</li>
+            <li>자율주행 고도화: 보행로&middot;자전거도로 Lv.4, 이면도로 Lv.3, 특수 환경 Lv.3 달성</li>
+            <li>맵 인프라 자동화 및 FMS/관제 체계 확립 (500대 동시 연결)</li>
+            <li>하드웨어 버전 판매</li>
+          </ul>
+        </div>
+        <div class="goal-card service">
+          <h3><span class="tag tag-service">서비스</span></h3>
+          <ul>
+            <li>배달 서비스 안정화 후 수거&middot;P2P&middot;광고&middot;주차관리로 서비스 영역 확장</li>
+            <li>GAEMI go 슈퍼앱 정식 오픈 (배송 + 광고 + 수거 통합)</li>
+            <li>B2B 확장 및 서드파티 API&middot;온프레미스 배포 지원</li>
+          </ul>
+        </div>
+        <div class="goal-card jipgaemi">
+          <h3><span class="tag tag-jipgaemi">집개미 TF</span></h3>
+          <ul>
+            <li>서비스 안정성 및 운영 효율 극대화</li>
+            <li>HW 개선(ZED 카메라 교체, 케이블 구조 개선) 및 SW 고도화(위치 추정, 층인식, 태스크 통합)</li>
+          </ul>
+        </div>
+        <div class="goal-card overseas">
+          <h3><span class="tag tag-overseas">해외향 출시 준비</span> <span class="new-badge">신규</span></h3>
+          <ul>
+            <li>북미&middot;일본 시장 진출을 위한 HW 수정</li>
+            <li>인증 기반 마련</li>
+            <li>시점 미정</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 2. 연간 로드맵 (Gantt) ==================== -->
+  <section id="overview" class="section">
+    <div class="container">
+      <div class="section-title"><span class="icon">&#128197;</span> 연간 로드맵</div>
+      <div class="section-desc">월별 마일스톤 배치 현황 (현재 진행 상황 반영)</div>
+
+      <div class="legend">
+        <div class="legend-item">
+          <div class="legend-dot" style="background:var(--c-ilgaemi)"></div> 일개미 5세대
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background:var(--c-service)"></div> 서비스
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background:var(--c-jipgaemi)"></div> 집개미 TF
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background:var(--c-infra)"></div> 인프라/관제
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background:var(--c-overseas)"></div> 해외향
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot legend-delay"></div> 지연
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background:var(--c-new)"></div> 신규 마일스톤
+        </div>
+      </div>
+
+      <div class="gantt-wrapper">
+        <table class="gantt-table">
+          <thead>
+            <tr>
+              <th>마일스톤</th>
+              <th>4월</th>
+              <th>5월</th>
+              <th>6월</th>
+              <th>7월</th>
+              <th>8월</th>
+              <th>9월</th>
+              <th>10월</th>
+              <th>11월</th>
+              <th>12월</th>
+              <th>'27.1월</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>일개미 5세대 출시 <span class="delay-badge">지연</span></td>
+              <td class="gantt-cell">
+                <div class="gantt-bar bar-delay">4월</div>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>배달 서비스 런칭 <span class="delay-badge">지연</span></td>
+              <td class="gantt-cell">
+                <div class="gantt-bar bar-delay">4월</div>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>일개미 5세대 오픈형 TP</td>
+              <td class="gantt-cell">
+                <div class="gantt-bar bar-ilgaemi">4월</div>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>수거 서비스 런칭</td>
+              <td></td>
+              <td class="gantt-cell">
+                <div class="gantt-bar bar-service">5월</div>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr class="new-row">
+              <td>일개미 5세대 고속 모터 버전 TP <span class="new-badge">신규</span></td>
+              <td></td>
+              <td></td>
+              <td class="gantt-cell">
+                <div class="gantt-bar bar-ilgaemi">6월</div>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>실내 서비스 지원 확대</td>
+              <td></td>
+              <td></td>
+              <td class="gantt-cell">
+                <div class="gantt-bar bar-ilgaemi">6월</div>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>자율주행 KPI 달성 (2Q)</td>
+              <td></td>
+              <td></td>
+              <td class="gantt-cell">
+                <div class="gantt-bar bar-ilgaemi">6월</div>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>맵 인프라 구축</td>
+              <td></td>
+              <td></td>
+              <td class="gantt-cell">
+                <div class="gantt-bar bar-infra">6월</div>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>FMS / 관제 고도화 (배차엔진)</td>
+              <td></td>
+              <td></td>
+              <td class="gantt-cell">
+                <div class="gantt-bar bar-infra">6월</div>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>하드웨어 판매 시작</td>
+              <td></td>
+              <td></td>
+              <td class="gantt-cell">
+                <div class="gantt-bar bar-ilgaemi">6월</div>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>서비스 인프라 구축</td>
+              <td></td>
+              <td></td>
+              <td class="gantt-cell">
+                <div class="gantt-bar bar-service">6월</div>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>집개미 상품화</td>
+              <td class="gantt-cell" colspan="3">
+                <div class="gantt-bar bar-jipgaemi">4~6월</div>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>맵리스 주행 고도화</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="gantt-cell">
+                <div class="gantt-bar bar-ilgaemi">8월</div>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>P2P 배송 MVP</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="gantt-cell">
+                <div class="gantt-bar bar-service">8월</div>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>광고 서비스 구축 (ES 8월 / 인증 9월)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="gantt-cell" colspan="2">
+                <div class="gantt-bar bar-service">8~9월</div>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>수거 서비스 고도화</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="gantt-cell">
+                <div class="gantt-bar bar-service">9월</div>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>차도/이면도로 자율주행</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="gantt-cell">
+                <div class="gantt-bar bar-ilgaemi">9월</div>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>운영 효율화</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="gantt-cell">
+                <div class="gantt-bar bar-infra">9월</div>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>주차관리 서비스 파일럿</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="gantt-cell">
+                <div class="gantt-bar bar-service">10월</div>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>자동배출 카고 ES</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="gantt-cell">
+                <div class="gantt-bar bar-ilgaemi">11월</div>
+              </td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>공용 충전 스테이션 ES</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="gantt-cell">
+                <div class="gantt-bar bar-ilgaemi">11월</div>
+              </td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>플랫폼 확장 (500대 운영)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="gantt-cell">
+                <div class="gantt-bar bar-infra">11월</div>
+              </td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>5세대 리비전 TP</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="gantt-cell">
+                <div class="gantt-bar bar-ilgaemi">12월</div>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>GAEMI go 슈퍼앱 정식 오픈</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="gantt-cell">
+                <div class="gantt-bar bar-service">12월</div>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>주차관리 서비스 상용화</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="gantt-cell">
+                <div class="gantt-bar bar-service">12월</div>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>특수 환경 자율주행</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="gantt-cell">
+                <div class="gantt-bar bar-ilgaemi">12월</div>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>셀프 광고 서비스 오픈</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="gantt-cell">
+                <div class="gantt-bar bar-service">'27.1월</div>
+              </td>
+            </tr>
+            <tr class="new-row">
+              <td>해외향 출시 준비 <span class="new-badge">신규</span></td>
+              <td colspan="10" class="gantt-cell">
+                <div class="tbd-bar">시점 미정</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 3. 마일스톤 상세 ==================== -->
+  <section id="timeline" class="section" style="background:white">
+    <div class="container">
+      <div class="section-title"><span class="icon">&#128640;</span> 마일스톤 상세</div>
+      <div class="section-desc">완료 항목은 흐리게 표시. 1분기 진행 상황 점검은 대표님 보고 기준 (🟢 완료 / 🟡 지연 / ⏸ 계획 변경)</div>
+
+      <!-- Q1 진행상황 점검 -->
+      <div class="quarter-group">
+        <div class="quarter-label q1-label"><span>Q1 진행상황 점검 (1~3월)</span> 5세대 양산 및 도입 준비 &middot; 대표님 보고 기준</div>
+        <div class="q1-status-grid">
+          <div class="q1-review">
+            <h3>1. 5세대 양산 준비 (인증&middot;생산 이관&middot;QC툴)</h3>
+            <ul>
+              <li><span class="st delay">!</span>생산 이관: PP 진행 중 <span class="delay-badge">지연</span><span
+                  class="eta-note">6월 20일 PP 완료 예정</span></li>
+              <li><span class="st delay">!</span>인증: KC 완료, 운행안전인증 심사 중(방수 시험 완료) <span
+                  class="delay-badge">지연</span><span class="eta-note">5월말 인증 완료 예정</span></li>
+              <li><span class="st delay">!</span>QC 공정: 초기 원시 공정 개발 완료, 테스트 진행 중, 일부 공정 개선 <span
+                  class="delay-badge">지연</span><span class="eta-note">PP 완료 시</span></li>
+            </ul>
+          </div>
+          <div class="q1-review">
+            <h3>2. 도입 최적화 (Zero-Map 주행&middot;설치툴)</h3>
+            <ul>
+              <li><span class="st done">&#10003;</span>일개미 도입툴 (맵 &amp; 패스 관리)</li>
+              <li><span class="st done">&#10003;</span>토폴로지컬 패스 기반 Zero-Map 주행</li>
+              <li><span class="st delay">!</span>집개미 설치툴 고도화(V2)<span class="label-delay">지연</span><span
+                  class="eta-note">완료</span></li>
+              <li><span class="st done">&#10003;</span>학습 기간 단축을 위한 인식 모델 일반화 성능 개선</li>
+            </ul>
+          </div>
+          <div class="q1-review">
+            <h3>3. 로보이츠 마케팅 시스템 &middot; 통계 지표 고도화</h3>
+            <ul>
+              <li><span class="st move">&rarr;</span>소셜 로그인<span class="label-move">3분기로 계획 변경</span></li>
+              <li><span class="st done">&#10003;</span>쿠폰 시스템</li>
+              <li><span class="st done">&#10003;</span>통계 지표 고도화 (개미 통계 지표 관리 시스템 3/31 출시)</li>
+            </ul>
+          </div>
+          <div class="q1-review">
+            <h3>기타 운영 마일스톤</h3>
+            <ul>
+              <li><span class="st delay">!</span>AIW 이관<span class="label-delay">지연</span></li>
+              <li><span class="st done">&#10003;</span>집개미 3.1세대 안정화</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 시점 미정 (해외향) -->
+      <div class="quarter-group">
+        <div class="quarter-label qx-label"><span>시점 미정</span> 해외향 출시 준비 (신규)</div>
+        <div class="milestones-grid">
+          <div class="ms-card cat-overseas is-new">
+            <div class="ms-header">
+              <div class="ms-title">해외향 출시 준비 <span class="new-badge">신규</span></div>
+              <span class="ms-month tbd">미정</span>
+            </div>
+            <div class="ms-tags"><span class="ms-tag tag-overseas">해외향</span></div>
+            <ul class="ms-items">
+              <li>북미향/일본향 무선충전기 주파수 변경</li>
+              <li>일본향 비상정지 스위치 적용</li>
+              <li>해외 인증 (북미/일본)</li>
+              <li><strong>최고 주행 속도 17km/h 상향</strong></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Q2 -->
+      <div class="quarter-group">
+        <div class="quarter-label q2-label"><span>Q2 &mdash; 2분기 (4~6월)</span> 5세대 TP 완료 &amp; 서비스 안정화</div>
+        <div class="milestones-grid">
+
+          <div class="ms-card cat-ilgaemi">
+            <div class="ms-header">
+              <div class="ms-title">4월 &mdash; 일개미 5세대</div>
+              <span class="ms-month q2">4월</span>
+            </div>
+            <div class="ms-tags"><span class="ms-tag tag-ilgaemi">일개미</span></div>
+            <ul class="ms-items">
+              <li class="st-done">HW 도구공간 납품 (4/9)</li>
+              <li class="st-delay">SW 출시: QC 툴 현장 적용, 태스크 시퀀스 안정화, 무선 충전 도킹 안정화 <span class="delay-badge">지연</span><span
+                  class="eta-note">5월말 완료 예정</span></li>
+              <li class="st-done">Gaemi Triage Acuity System 적용 (에러 분류 시스템 및 LED 점등 방식 통합)</li>
+              <li class="st-done">이기종 데이터 파이프라인: 월 6사이트 이상 학습/배포 체계</li>
+              <li class="st-done">로봇 환경 마이그레이션</li>
+            </ul>
+          </div>
+
+          <div class="ms-card cat-ilgaemi">
+            <div class="ms-header">
+              <div class="ms-title">4월 &mdash; 일개미 5세대 오픈형 TP</div>
+              <span class="ms-month q2">4월</span>
+            </div>
+            <div class="ms-tags"><span class="ms-tag tag-ilgaemi">일개미</span></div>
+            <ul class="ms-items">
+              <li class="st-done">오픈형 모델 ES 완료 (4월 말)</li>
+              <li class="st-delay">오픈형 모델 양산 준비 <span class="delay-badge">지연</span><span class="eta-note">5월말 완료
+                  예정</span></li>
+            </ul>
+          </div>
+
+          <div class="ms-card cat-service">
+            <div class="ms-header">
+              <div class="ms-title">5월 &mdash; 배달 서비스 런칭</div>
+              <span class="ms-month q2">5월</span>
+            </div>
+            <div class="ms-tags"><span class="ms-tag tag-service">서비스</span></div>
+            <ul class="ms-items">
+              <li>상용 운영 전환 (5/8), 로보이츠 쿠폰 시스템 출시</li>
+              <li>E2E 프로세스 정립: 설치 &rarr; 매핑 &rarr; 자율주행 &rarr; 배달 &rarr; 정산</li>
+            </ul>
+          </div>
+
+          <div class="ms-card cat-service">
+            <div class="ms-header">
+              <div class="ms-title">5월 &mdash; 수거 서비스 런칭</div>
+              <span class="ms-month q2">5월</span>
+            </div>
+            <div class="ms-tags"><span class="ms-tag tag-service">서비스</span></div>
+            <ul class="ms-items">
+              <li>수거 서비스 재정비: 엠밸리4단지 수거 서비스 시작 (덤프형 4대 + 배달형 2대)</li>
+              <li>덤프형 태스크: 호출 수신 &rarr; 집 앞 이동 &rarr; 적재 &rarr; 이동 &rarr; 쓰레기장 덤프 &rarr; 복귀</li>
+              <li>수거 호출 앱 UI 구현 (사용자 인증)</li>
+              <li>식음료배송 서비스와 수거서비스의 지역 통합</li>
+              <li>4세대 덤프형</li>
+            </ul>
+          </div>
+
+          <div class="ms-card cat-ilgaemi is-new">
+            <div class="ms-header">
+              <div class="ms-title">6월 &mdash; 일개미 5세대 고속 모터 버전 TP <span class="new-badge">신규</span></div>
+              <span class="ms-month q2">6월</span>
+            </div>
+            <div class="ms-tags"><span class="ms-tag tag-ilgaemi">일개미</span></div>
+            <ul class="ms-items">
+              <li>13km/h 고속 모터 적용</li>
+            </ul>
+          </div>
+
+          <div class="ms-card cat-ilgaemi">
+            <div class="ms-header">
+              <div class="ms-title">6월 &mdash; 실내 서비스 지원 확대</div>
+              <span class="ms-month q2">6월</span>
+            </div>
+            <div class="ms-tags"><span class="ms-tag tag-ilgaemi">일개미</span></div>
+            <ul class="ms-items">
+              <li>엘리베이터 승하차 주행 지원</li>
+              <li>EV 연동 서버화 (현대 프로토콜 서버 측 구현)</li>
+              <li>공동현관/자동문 연동 (API/원패스/리모컨 제어)</li>
+              <li>5세대 일개미 실내 영역 맵 확장</li>
+            </ul>
+          </div>
+
+          <div class="ms-card cat-ilgaemi">
+            <div class="ms-header">
+              <div class="ms-title">6월 &mdash; 자율주행 KPI 달성</div>
+              <span class="ms-month q2">6월</span>
+            </div>
+            <div class="ms-tags"><span class="ms-tag tag-ilgaemi">일개미</span></div>
+            <ul class="ms-items">
+              <li>위성 지도 도착 정확성 1m 이내 (5월)</li>
+              <li>보행로/자전거도로 Lv.3&rarr;4 (고도 자율주행), 혼잡구역 Lv.2&rarr;3 (부분 자율주행)</li>
+              <li>MPI 200m 달성 (6월)</li>
+              <li>위치 추정 정확도: 보행로/이면도로 30cm 이내, 광장/개활지 50cm 이내</li>
+              <li>주행 제어: 직진성 안정화, Jerk 기반 부드러운 가감속, 최대 7.2km/h</li>
+              <li>인식 파이프라인 리소스 최적화</li>
+              <li>지도 내 불특정 위치에서 도착 기능 추가</li>
+              <li>주행로 인식 모델 정기 학습 체계 도입</li>
+            </ul>
+          </div>
+
+          <div class="ms-card cat-infra">
+            <div class="ms-header">
+              <div class="ms-title">6월 &mdash; 맵 인프라 구축</div>
+              <span class="ms-month q2">6월</span>
+            </div>
+            <div class="ms-tags"><span class="ms-tag"
+                style="background:var(--c-infra-bg);color:var(--c-infra)">인프라</span></div>
+            <ul class="ms-items">
+              <li>3D Mapping / Drive Map 파이프라인 안정화</li>
+              <li>MGAT 3시간 미만 (1km 편집 시간)</li>
+              <li>매핑 장비 도입 및 HD맵 자동 생성 고도화</li>
+              <li>실내 영역 맵 확장 대응</li>
+              <li>로봇 도입 시간(RDT) 2시간 미만 달성 (베이스맵 500m 이내)</li>
+            </ul>
+          </div>
+
+          <div class="ms-card cat-infra">
+            <div class="ms-header">
+              <div class="ms-title">6월 &mdash; FMS / 관제 고도화 (배차엔진)</div>
+              <span class="ms-month q2">6월</span>
+            </div>
+            <div class="ms-tags"><span class="ms-tag"
+                style="background:var(--c-infra-bg);color:var(--c-infra)">인프라</span></div>
+            <ul class="ms-items">
+              <li>관제 Joystick 안정화, 온라인 파라미터 관리</li>
+              <li>서버 무중단 배포</li>
+              <li>배차 엔진 도입, 유휴 시간 서브잡 자동 배정비교</li>
+              <li>로봇 상태 기반 대시보드</li>
+              <li>FMS 에러 알림 시인성&middot;접근성 개선</li>
+              <li>관제 주행 편의성 1차 피드백 반영</li>
+              <li>FMS 주변 환경 시인성 개선</li>
+              <li>FMS 배차 스케쥴 관리 기능 추가</li>
+            </ul>
+          </div>
+
+          <div class="ms-card cat-ilgaemi">
+            <div class="ms-header">
+              <div class="ms-title">6월 &mdash; 하드웨어 판매 시작</div>
+              <span class="ms-month q2">6월</span>
+            </div>
+            <div class="ms-tags"><span class="ms-tag tag-ilgaemi">일개미</span></div>
+            <ul class="ms-items">
+              <li>HW 커스텀 지원 (요구한 부분에 대해 공유, 업체가 직접 커스텀)</li>
+              <li>오픈 코드, 매뉴얼 제공</li>
+            </ul>
+          </div>
+
+          <div class="ms-card cat-service">
+            <div class="ms-header">
+              <div class="ms-title">6월 &mdash; 서비스 인프라 구축</div>
+              <span class="ms-month q2">6월</span>
+            </div>
+            <div class="ms-tags"><span class="ms-tag tag-service">서비스</span></div>
+            <ul class="ms-items">
+              <li>Gaemi Admin: 서비스 지역 생성 API, 점주 셀프 등록</li>
+              <li>Gaemi POS</li>
+              <li>개미 서버 인프라 구축: 500대 동시 연결 지원</li>
+            </ul>
+          </div>
+
+          <div class="ms-card cat-jipgaemi">
+            <div class="ms-header">
+              <div class="ms-title">6월 &mdash; 집개미 상품화</div>
+              <span class="ms-month q2">4~6월</span>
+            </div>
+            <div class="ms-tags"><span class="ms-tag tag-jipgaemi">집개미 TF</span></div>
+            <ul class="ms-items">
+              <li>이슈분석 시스템 (4월~), 파라미터 간소화</li>
+              <li><s>ZED 카메라 교체(장기 플랜)</s></li>
+              <li>케이블 구조적 결함 개선</li>
+              <li>위치 추정 AMCL 개선: nav2 AMCL &rarr; beluga AMCL 전환</li>
+              <li>매니퓰레이터 모션 플래닝: 충돌 감지 기반 장애물 회피</li>
+              <li>엘리베이터 층인식 개선: 기압 센서 활용</li>
+              <li>태스크 구조 통합: JI/TI 이원화 &rarr; 단일 인터페이스</li>
+              <li>시스템 구조 개선</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Q3 -->
+      <div class="quarter-group">
+        <div class="quarter-label q3-label"><span>Q3 &mdash; 3분기 (7~9월)</span> 서비스 영역 확장 &amp; 주행 고도화</div>
+        <div class="milestones-grid">
+
+          <div class="ms-card cat-ilgaemi">
+            <div class="ms-header">
+              <div class="ms-title">8월 &mdash; 맵리스 주행 고도화</div>
+              <span class="ms-month q3">8월</span>
+            </div>
+            <div class="ms-tags"><span class="ms-tag tag-ilgaemi">일개미</span></div>
+            <ul class="ms-items">
+              <li>횡단보도 등 위험 구역에서 자율주행 기능 지원</li>
+            </ul>
+          </div>
+
+          <div class="ms-card cat-service">
+            <div class="ms-header">
+              <div class="ms-title">8월 &mdash; P2P 배송 MVP</div>
+              <span class="ms-month q3">8월</span>
+            </div>
+            <div class="ms-tags"><span class="ms-tag tag-service">서비스</span></div>
+            <ul class="ms-items">
+              <li>GAEMI go 슈퍼앱 컨셉 정의, UX 설계 (5~6월)</li>
+              <li>GAEMI go 앱 개발: 배송 요청/추적/수령 확인/결제 (7~8월)</li>
+              <li>시간 예약 + 실시간 호출 배차 로직</li>
+              <li>시범 사이트 베타 서비스 운영 (중고거래/소형화물)</li>
+            </ul>
+          </div>
+
+          <div class="ms-card cat-service">
+            <div class="ms-header">
+              <div class="ms-title">9월 &mdash; 광고 서비스 구축</div>
+              <span class="ms-month q3">9월</span>
+            </div>
+            <div class="ms-tags"><span class="ms-tag tag-service">서비스</span><span class="ms-tag tag-ilgaemi">일개미</span>
+            </div>
+            <ul class="ms-items">
+              <li>광고형 모델 ES 완료 (8월)</li>
+              <li>운행안정인증 등 인증 완료 (9월) <span class="new-badge">신규</span></li>
+              <li>광고 CMS 구축: 등록/스케줄링/타겟팅(지역&middot;시간대)/송출 제어</li>
+              <li>멀티 로봇 동시 광고 송출 체계</li>
+              <li>광고 노출 통계 수집 (노출 수, 지역별 도달률, 시간대별 통계)</li>
+            </ul>
+          </div>
+
+          <div class="ms-card cat-service">
+            <div class="ms-header">
+              <div class="ms-title">9월 &mdash; 수거 서비스 고도화</div>
+              <span class="ms-month q3">9월</span>
+            </div>
+            <div class="ms-tags"><span class="ms-tag tag-service">서비스</span></div>
+            <ul class="ms-items">
+              <li>쓰레기 탑재 인식 고도화</li>
+              <li>쓰레기장 상태에 따른 덤프 위치 변경</li>
+              <li>수거 스케줄링 도입 (정기 수거 예약 + 수시 호출 병행)</li>
+            </ul>
+          </div>
+
+          <div class="ms-card cat-ilgaemi">
+            <div class="ms-header">
+              <div class="ms-title">9월 &mdash; 차도/이면도로 자율주행</div>
+              <span class="ms-month q3">9월</span>
+            </div>
+            <div class="ms-tags"><span class="ms-tag tag-ilgaemi">일개미</span></div>
+            <ul class="ms-items">
+              <li>이면도로 Lv.1&rarr;3, 횡단보도 Lv.3&rarr;4, 차도/갓길 Lv.0&rarr;2</li>
+              <li>정적 장애물 사전 회피 + 동적 장애물 부드러운 속도 조절</li>
+              <li>8차선 규모 신호등(적/녹/황) 인식, 진입/대기 판단</li>
+              <li>위험 지형 탐지: 배수로(그레이팅)&middot;단차&middot;계단 낙하 위험 구간</li>
+              <li>통신 음영구역: 로컬 맵/경로 기반 자율주행 유지, 복구 시 자동 재동기화</li>
+            </ul>
+          </div>
+
+          <div class="ms-card cat-infra">
+            <div class="ms-header">
+              <div class="ms-title">9월 &mdash; 운영 효율화</div>
+              <span class="ms-month q3">9월</span>
+            </div>
+            <div class="ms-tags"><span class="ms-tag"
+                style="background:var(--c-infra-bg);color:var(--c-infra)">인프라</span></div>
+            <ul class="ms-items">
+              <li>300대 이상 동시 연결 안정성 확보</li>
+              <li>관제 효율 최적화: 10 R/H 목표 점진 달성</li>
+              <li>통계/리포트 및 반복 이슈 패턴 자동 감지</li>
+              <li>이벤트 지도 작성 (사고, 통신 상태, 개입, 주행 빈도)</li>
+              <li>다중 사이트 혼합 운영 (배달/광고/주차), 정산/CS 체계 정비</li>
+              <li>게이트웨이 &harr; 멀티 백엔드 시스템 연동 <span class="new-badge">신규</span></li>
+              <li>로봇-FMS 버전 호환성 관리 체계 <span class="new-badge">신규</span></li>
+              <li>인식 모델 정기 학습 적용 파이프라인 <span class="new-badge">신규</span></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Q4 -->
+      <div class="quarter-group">
+        <div class="quarter-label q4-label"><span>Q4 &mdash; 4분기 (10~12월)</span> 고도화 &amp; 플랫폼화</div>
+        <div class="milestones-grid">
+
+          <div class="ms-card cat-service">
+            <div class="ms-header">
+              <div class="ms-title">10월 &mdash; 주차관리 서비스 파일럿</div>
+              <span class="ms-month q4">10월</span>
+            </div>
+            <div class="ms-tags"><span class="ms-tag tag-service">서비스</span></div>
+            <ul class="ms-items">
+              <li>번호판 인식 모델 개발 (카메라 OCR, 야간/역광 대응)</li>
+              <li>주차관리 서버 API: 차량 진입 이벤트 수신, 인식 결과 저장/조회, 관리자 대시보드</li>
+              <li>파일럿 사이트 선정 및 시범 운영</li>
+            </ul>
+          </div>
+
+          <div class="ms-card cat-ilgaemi">
+            <div class="ms-header">
+              <div class="ms-title">11월 &mdash; 자동배출 카고 ES</div>
+              <span class="ms-month q4">11월</span>
+            </div>
+            <div class="ms-tags"><span class="ms-tag tag-ilgaemi">일개미</span></div>
+            <ul class="ms-items">
+              <li>자동배출 카고 모델 ES (양산 출시는 후속 단계)</li>
+              <li>배출 메카니즘 연동 및 태스크 시퀀스 통합</li>
+            </ul>
+          </div>
+
+          <div class="ms-card cat-infra">
+            <div class="ms-header">
+              <div class="ms-title">11월 &mdash; 플랫폼 확장</div>
+              <span class="ms-month q4">11월</span>
+            </div>
+            <div class="ms-tags"><span class="ms-tag"
+                style="background:var(--c-infra-bg);color:var(--c-infra)">인프라</span></div>
+            <ul class="ms-items">
+              <li>500대 이상 동시 연결 확장</li>
+              <li>서드파티 API 고도화</li>
+              <li>온프레미스 배포 지원 (지자체/스마트시티)</li>
+            </ul>
+          </div>
+
+          <div class="ms-card cat-ilgaemi">
+            <div class="ms-header">
+              <div class="ms-title">11월 &mdash; 공용 충전 스테이션 ES</div>
+              <span class="ms-month q4">11월</span>
+            </div>
+            <div class="ms-tags"><span class="ms-tag tag-ilgaemi">일개미</span></div>
+            <ul class="ms-items">
+              <li>공용 충전 스테이션 개발</li>
+              <li>(미정) 일개미 5세대 충전부 파생 제품(공용 충전 스테이션용)</li>
+            </ul>
+          </div>
+
+          <div class="ms-card cat-ilgaemi">
+            <div class="ms-header">
+              <div class="ms-title">12월 &mdash; 5세대 리비전 TP</div>
+              <span class="ms-month q4">12월</span>
+            </div>
+            <div class="ms-tags"><span class="ms-tag tag-ilgaemi">일개미</span></div>
+            <ul class="ms-items">
+              <li>상반기 운영 피드백 반영, 자율주행 안정성 개선, HW/SW 최적화 종합 적용</li>
+              <li>모터 드라이브 개선 (8월)</li>
+              <li>대량 양산 준비 (생산성 개선 등)</li>
+            </ul>
+          </div>
+
+          <div class="ms-card cat-service">
+            <div class="ms-header">
+              <div class="ms-title">12월 &mdash; GAEMI go 슈퍼앱 정식 오픈</div>
+              <span class="ms-month q4">12월</span>
+            </div>
+            <div class="ms-tags"><span class="ms-tag tag-service">서비스</span></div>
+            <ul class="ms-items">
+              <li>배송 + 광고 + 수거 통합 슈퍼앱</li>
+              <li>P2P 서비스 지역 확장 및 이용자 확대</li>
+              <li>자동배출 카고 기반 무인 수령 지원</li>
+            </ul>
+          </div>
+
+          <div class="ms-card cat-service">
+            <div class="ms-header">
+              <div class="ms-title">12월 &mdash; 주차관리 서비스 상용화</div>
+              <span class="ms-month q4">12월</span>
+            </div>
+            <div class="ms-tags"><span class="ms-tag tag-service">서비스</span></div>
+            <ul class="ms-items">
+              <li>번호판 인식 고도화 (야간/우천/다양한 번호판 유형 대응)</li>
+              <li>정기 순회 + 신규 진입 이벤트 기반 혼합 운영</li>
+              <li>주차 관리 업체 연동 API 상용화</li>
+            </ul>
+          </div>
+
+          <div class="ms-card cat-ilgaemi">
+            <div class="ms-header">
+              <div class="ms-title">12월 &mdash; 특수 환경 자율주행</div>
+              <span class="ms-month q4">12월</span>
+            </div>
+            <div class="ms-tags"><span class="ms-tag tag-ilgaemi">일개미</span></div>
+            <ul class="ms-items">
+              <li>눈길&middot;낙엽길 Lv.1&rarr;3, 엘리베이터 Lv.2&rarr;4, 자동문 Lv.3&rarr;4</li>
+              <li>환경 강건성: -10~40&#8451;, 역광, 야간, 우천 대응</li>
+              <li>이벤트 지도 기반 주행 정책 도입</li>
+              <li>자동문/엘리베이터 문 개방 인식 (카메라 기반)</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 2027 Q1 -->
+      <div class="quarter-group">
+        <div class="quarter-label q5-label"><span>2027 Q1</span></div>
+        <div class="milestones-grid">
+          <div class="ms-card cat-service">
+            <div class="ms-header">
+              <div class="ms-title">1월 (2027) &mdash; 셀프 광고 서비스 오픈</div>
+              <span class="ms-month q5">'27.1월</span>
+            </div>
+            <div class="ms-tags"><span class="ms-tag tag-service">서비스</span></div>
+            <ul class="ms-items">
+              <li>GAEMI go 광고탭: 개인/소상공인 셀프 광고 등록</li>
+              <li>광고주 리포팅 시스템 (노출&middot;도달&middot;클릭 분석)</li>
+              <li>주행 경로 기반 노출 최적화</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 4. KPI ==================== -->
+  <section id="kpi" class="section">
+    <div class="container">
+      <div class="section-title"><span class="icon">&#128200;</span> KPI</div>
+      <div class="section-desc">영업 목표 달성을 위한 개발부 통합 KPI 및 팀별 기여 지표</div>
+
+      <!-- 영업 목표 달성을 위한 KPI -->
+      <div class="kpi-wrapper">
+        <table class="biz-kpi-table">
+          <thead>
+            <tr>
+              <th>개발부 통합 KPI (영업적 결과)</th>
+              <th>하위 팀별 핵심 기여 지표 (수단)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- 규모화 & 확산 -->
+            <tr class="biz-category">
+              <td colspan="2">규모화 &amp; 확산</td>
+            </tr>
+            <tr>
+              <td rowspan="2" class="kpi-result">5세대 양산 (확산 준비)</td>
+              <td>금형 개발 및 공장 이관, 원가 절감형 기본형 생산 <span class="team-tag">메카니즘</span></td>
+            </tr>
+            <tr>
+              <td>평균 고장 간격 &gt; 2,500시간 <span class="team-tag">임베디드</span></td>
+            </tr>
+            <tr>
+              <td rowspan="5" class="kpi-result">로봇 도입 속도 3배 가속<br><small style="color:var(--gray-500)">(설치 비용 및 리소스
+                  절감)</small></td>
+              <td>도입 시간(RDT) &lt; 2h <span class="team-tag">플래닝</span></td>
+            </tr>
+            <tr>
+              <td>지도 제작(MGAT) &lt; 3h/km <span class="team-tag">플래닝</span><span class="team-tag">퍼셉션</span></td>
+            </tr>
+            <tr>
+              <td>학습 파이프라인 자동화율 &gt; 90% <span class="team-tag">퍼셉션</span></td>
+            </tr>
+            <tr>
+              <td>첫 주문 전환율 50% [소셜 로그인 도입] <span class="team-tag">커넥터</span></td>
+            </tr>
+            <tr>
+              <td>부하 테스트 동시접속 1,000대 / 주문 매칭 성공률 98% <span class="team-tag">커넥터</span></td>
+            </tr>
+            <tr>
+              <td rowspan="2" class="kpi-result">협력사 로봇 도입 지원<br><small style="color:var(--gray-500)">(SI 및 판매
+                  지원)</small></td>
+              <td>파트너 로봇(집개미) 도입 시간(RDT) &lt; 8h <span class="team-tag">인티그레이션</span></td>
+            </tr>
+            <tr>
+              <td>B2B 표준 API/SDK 문서화 및 제공률 100% <span class="team-tag">커넥터</span></td>
+            </tr>
+
+            <!-- 수익 극대화 -->
+            <tr class="biz-category">
+              <td colspan="2">수익 극대화 (서비스 품질)</td>
+            </tr>
+            <tr>
+              <td rowspan="4" class="kpi-result">평균 배송 시간(LDT) 15% 단축<br><small style="color:var(--gray-500)">(로봇 회전율 및
+                  CS 향상)</small></td>
+              <td>리소스 사용량 15% 개선 <span class="team-tag">퍼셉션</span></td>
+            </tr>
+            <tr>
+              <td>조리 시간 맞춤 배차 &lt; 대기시간 50% 감소 <span class="team-tag">커넥터</span></td>
+            </tr>
+            <tr>
+              <td>태스크 실패 복구 시간(TRT) &lt; 30s <span class="team-tag">인티그레이션</span></td>
+            </tr>
+            <tr>
+              <td>평균 주행 속도 25% 향상 [0.8m/s &rarr; 1.0m/s] <span class="team-tag">플래닝</span></td>
+            </tr>
+            <tr>
+              <td rowspan="2" class="kpi-result">고부가 서비스 기술 준비도 100%<br><small style="color:var(--gray-500)">(광고 서비스
+                  상용화)</small></td>
+              <td>광고형 하드웨어 ES 완료 <span class="team-tag">메카니즘</span><span class="team-tag">임베디드</span></td>
+            </tr>
+            <tr>
+              <td>광고 CMS 연동 완료 <span class="team-tag">커넥터</span></td>
+            </tr>
+
+            <!-- 운영 안정성 -->
+            <tr class="biz-category">
+              <td colspan="2">운영 안정성 (운영 비용)</td>
+            </tr>
+            <tr>
+              <td rowspan="5" class="kpi-result">서비스 가동률 98% 유지<br><small style="color:var(--gray-500)">(영업 손실 방지 및 신뢰도
+                  향상)</small></td>
+              <td>고장 간격(MTBF) &gt; 2500h <span class="team-tag">임베디드</span></td>
+            </tr>
+            <tr>
+              <td>완전 배송률(PDR) 90% <span class="team-tag">인티그레이션</span><span class="team-tag">플래닝</span><span
+                  class="team-tag">커넥터</span></td>
+            </tr>
+            <tr>
+              <td>주행 불능 사고율 2% <span class="team-tag">임베디드</span><span class="team-tag">인티그레이션</span><span
+                  class="team-tag">퍼셉션</span></td>
+            </tr>
+            <tr>
+              <td>이상 징후 감지율 98% <span class="team-tag">인티그레이션</span></td>
+            </tr>
+            <tr>
+              <td>매칭/주문 처리율 98% <span class="team-tag">커넥터</span></td>
+            </tr>
+            <tr>
+              <td rowspan="4" class="kpi-result">R/H 10 이상<br><small style="color:var(--gray-500)">(운영 비용 절감)</small>
+              </td>
+              <td>개입 없는 주행거리(MPI) &gt; 1km <span class="team-tag">인티그레이션</span><span class="team-tag">플래닝</span><span
+                  class="team-tag">퍼셉션</span></td>
+            </tr>
+            <tr>
+              <td>운영비용 절감 30%&gt; <span class="team-tag">인티그레이션</span></td>
+            </tr>
+            <tr>
+              <td>광고 배포 소요 시간 5분 이내 <span class="team-tag">커넥터</span></td>
+            </tr>
+            <tr>
+              <td>학습 데이터 자산화율 100% <span class="team-tag">플래닝</span><span class="team-tag">퍼셉션</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- KPI 상세 -->
+      <div style="margin-top:40px">
+        <div class="section-title" style="font-size:1.15rem"><span class="icon">&#128202;</span> KPI 상세</div>
+        <div class="section-desc">영업 목표별 핵심 지표 및 달성 시점</div>
+        <div class="kpi-wrapper">
+          <table class="kpi-table">
+            <thead>
+              <tr>
+                <th>영업 목표</th>
+                <th>지표</th>
+                <th>목표</th>
+                <th>달성 시점</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="kpi-group-header">
+                <td colspan="4">규모화 &amp; 확산</td>
+              </tr>
+              <tr>
+                <td>5세대 양산</td>
+                <td>MTBF (평균 고장 간격)</td>
+                <td><strong>&gt; 2,500h</strong></td>
+                <td><span class="month-badge q4">Q4</span></td>
+              </tr>
+              <tr>
+                <td rowspan="4">로봇 도입 속도 3배 가속</td>
+                <td>로봇 도입 시간 (RDT)</td>
+                <td><strong>&lt; 2h</strong></td>
+                <td><span class="month-badge q3">Q3</span></td>
+              </tr>
+              <tr>
+                <td>지도 제작 (MGAT)</td>
+                <td><strong>&lt; 3h/km</strong></td>
+                <td><span class="month-badge q4">Q4</span></td>
+              </tr>
+              <tr>
+                <td>학습 파이프라인 자동화율</td>
+                <td><strong>&gt; 90%</strong></td>
+                <td><span class="month-badge q4">Q4</span></td>
+              </tr>
+              <tr>
+                <td>첫 주문 전환율</td>
+                <td><strong>50%</strong></td>
+                <td><span class="month-badge q2">Q2</span></td>
+              </tr>
+              <tr>
+                <td rowspan="3">협력사 로봇 도입 지원</td>
+                <td>동시접속 / 주문 매칭 성공률</td>
+                <td><strong>1,000대 / 98%</strong></td>
+                <td><span class="month-badge q1">Q1</span></td>
+              </tr>
+              <tr>
+                <td>파트너 로봇 도입 시간 (RDT)</td>
+                <td><strong>&lt; 8h</strong></td>
+                <td><span class="month-badge">연간</span></td>
+              </tr>
+              <tr>
+                <td>B2B API/SDK 제공률</td>
+                <td><strong>100%</strong></td>
+                <td><span class="month-badge">연간</span></td>
+              </tr>
+
+              <tr class="kpi-group-header">
+                <td colspan="4">수익 극대화 (서비스 품질)</td>
+              </tr>
+              <tr>
+                <td rowspan="4">평균 배송 시간(LDT) 15% 단축</td>
+                <td>리소스 사용량 개선</td>
+                <td><strong>15%</strong></td>
+                <td><span class="month-badge q4">Q4</span></td>
+              </tr>
+              <tr>
+                <td>조리 시간 맞춤 배차 대기시간 감소</td>
+                <td><strong>50%</strong></td>
+                <td><span class="month-badge">연간</span></td>
+              </tr>
+              <tr>
+                <td>태스크 실패 복구 시간(TRT)</td>
+                <td><strong>30s</strong></td>
+                <td><span class="month-badge">연간</span></td>
+              </tr>
+              <tr>
+                <td>평균 주행 속도 향상</td>
+                <td><strong>25% (1.0m/s)</strong></td>
+                <td><span class="month-badge">연간</span></td>
+              </tr>
+              <tr>
+                <td rowspan="2">고부가 서비스 준비도 100%</td>
+                <td>광고형 하드웨어</td>
+                <td><strong>ES 완료</strong></td>
+                <td><span class="month-badge q3">8월</span></td>
+              </tr>
+              <tr>
+                <td>광고 CMS 연동</td>
+                <td><strong>완료</strong></td>
+                <td><span class="month-badge">연간</span></td>
+              </tr>
+
+              <tr class="kpi-group-header">
+                <td colspan="4">운영 안정성 (운영 비용)</td>
+              </tr>
+              <tr>
+                <td rowspan="5">서비스 가동률 98% 유지</td>
+                <td>완전 배송률 (PDR)</td>
+                <td><strong>90%</strong></td>
+                <td><span class="month-badge q4">Q4</span></td>
+              </tr>
+              <tr>
+                <td>주행 불능 사고율</td>
+                <td><strong>2%</strong></td>
+                <td><span class="month-badge q4">Q4</span></td>
+              </tr>
+              <tr>
+                <td>이상 징후 감지율</td>
+                <td><strong>98%</strong></td>
+                <td><span class="month-badge q4">Q4</span></td>
+              </tr>
+              <tr>
+                <td>매칭/주문 처리율</td>
+                <td><strong>98%</strong></td>
+                <td><span class="month-badge">연간</span></td>
+              </tr>
+              <tr>
+                <td>개입 없는 주행거리 (MPI)</td>
+                <td><strong>&gt; 1km</strong></td>
+                <td><span class="month-badge q3">Q3</span></td>
+              </tr>
+              <tr>
+                <td rowspan="3">R/H 10 이상</td>
+                <td>운영비용 절감</td>
+                <td><strong>&gt; 30%</strong></td>
+                <td><span class="month-badge">연간</span></td>
+              </tr>
+              <tr>
+                <td>광고 배포 소요 시간</td>
+                <td><strong>5분 이내</strong></td>
+                <td><span class="month-badge q3">Q3</span></td>
+              </tr>
+              <tr>
+                <td>학습 데이터 자산화율</td>
+                <td><strong>100%</strong></td>
+                <td><span class="month-badge q4">Q4</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 자율주행 레벨 상세 -->
+      <div style="margin-top:40px">
+        <div class="section-title" style="font-size:1.15rem"><span class="icon">&#128736;</span> 자율주행 레벨 상세</div>
+        <div class="section-desc">환경별 우선순위 및 현재/목표 스펙</div>
+        <div class="kpi-wrapper">
+          <table class="kpi-table">
+            <thead>
+              <tr>
+                <th>환경</th>
+                <th>우선 순위</th>
+                <th>현재 스펙</th>
+                <th>맵리스 주행 목표 스펙</th>
+                <th>자율주행 목표 스펙</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>보행로(인도)</td>
+                <td><strong>상</strong></td>
+                <td>Lv.3 (부분 자율주행)</td>
+                <td>Lv.3 (부분 자율주행)</td>
+                <td><strong>Lv.4</strong> (고도 자율주행)</td>
+              </tr>
+              <tr>
+                <td>자전거도로</td>
+                <td><strong>중</strong></td>
+                <td>Lv.3 (부분 자율주행)</td>
+                <td>Lv.3 (부분 자율주행)</td>
+                <td><strong>Lv.4</strong> (고도 자율주행)</td>
+              </tr>
+              <tr>
+                <td>차도(갓길, 주차장)</td>
+                <td><strong>중</strong></td>
+                <td>Lv.0 (미지원)</td>
+                <td>Lv.1 (원격 조종)</td>
+                <td><strong>Lv.2</strong> (원격 주행)</td>
+              </tr>
+              <tr>
+                <td>계단</td>
+                <td>-</td>
+                <td>Lv.0 (미지원)</td>
+                <td>Lv.0 (미지원)</td>
+                <td>Lv.0 (미지원)</td>
+              </tr>
+              <tr>
+                <td>단차</td>
+                <td>-</td>
+                <td>Lv.0 (미지원)</td>
+                <td>Lv.0 (미지원)</td>
+                <td>Lv.0 (미지원)</td>
+              </tr>
+              <tr>
+                <td>엘리베이터</td>
+                <td><strong>중</strong></td>
+                <td>Lv.2 (원격 주행)</td>
+                <td>Lv.0 (미지원)</td>
+                <td><strong>Lv.4</strong> (고도 자율주행)</td>
+              </tr>
+              <tr>
+                <td>이면도로</td>
+                <td><strong>상</strong></td>
+                <td>Lv.1 (원격 조종)</td>
+                <td>Lv.2 (원격 주행)</td>
+                <td><strong>Lv.3</strong> (부분 자율주행)</td>
+              </tr>
+              <tr>
+                <td>횡단보도</td>
+                <td><strong>중</strong></td>
+                <td>Lv.3 (부분 자율주행)</td>
+                <td>Lv.2 (원격 주행)</td>
+                <td><strong>Lv.4</strong> (고도 자율주행)</td>
+              </tr>
+              <tr>
+                <td>자동문</td>
+                <td><strong>중</strong></td>
+                <td>Lv.3 (부분 자율주행)</td>
+                <td>Lv.0 (미지원)</td>
+                <td><strong>Lv.4</strong> (고도 자율주행)</td>
+              </tr>
+              <tr>
+                <td>눈길</td>
+                <td><strong>하</strong></td>
+                <td>Lv.1 (원격 조종)</td>
+                <td>Lv.2 (원격 주행)</td>
+                <td><strong>Lv.3</strong> (부분 자율주행)</td>
+              </tr>
+              <tr>
+                <td>주차장진출입로</td>
+                <td><strong>하</strong></td>
+                <td>Lv.3 (부분 자율주행)</td>
+                <td>Lv.1 (원격 조종)</td>
+                <td><strong>Lv.4</strong> (고도 자율주행)</td>
+              </tr>
+              <tr>
+                <td>낙엽길</td>
+                <td><strong>하</strong></td>
+                <td>Lv.1 (원격 조종)</td>
+                <td>Lv.2 (원격 주행)</td>
+                <td><strong>Lv.3</strong> (부분 자율주행)</td>
+              </tr>
+              <tr>
+                <td>협로</td>
+                <td><strong>중</strong></td>
+                <td>Lv.2 (원격 주행)</td>
+                <td>Lv.3 (부분 자율주행)</td>
+                <td><strong>Lv.3</strong> (부분 자율주행)</td>
+              </tr>
+              <tr>
+                <td>혼잡 구역</td>
+                <td><strong>상</strong></td>
+                <td>Lv.2 (원격 주행)</td>
+                <td>Lv.2 (원격 주행)</td>
+                <td><strong>Lv.3</strong> (부분 자율주행)</td>
+              </tr>
+              <tr>
+                <td>광장(개활지)</td>
+                <td><strong>중</strong></td>
+                <td>Lv.2 (원격 주행)</td>
+                <td>Lv.2 (원격 주행)</td>
+                <td><strong>Lv.4</strong> (고도 자율주행)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 자율주행 레벨 정의 -->
+      <div style="margin-top:40px">
+        <div class="section-title" style="font-size:1.15rem"><span class="icon">&#128218;</span> 자율주행 레벨 정의</div>
+        <div class="section-desc">레벨별 자율성 범위 및 사람 개입 정도</div>
+        <div class="kpi-wrapper">
+          <table class="kpi-table">
+            <thead>
+              <tr>
+                <th style="width:80px">레벨</th>
+                <th style="width:140px">명칭</th>
+                <th>정의</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Lv.0</strong></td>
+                <td>미지원</td>
+                <td>해당 환경에서 로봇 운용이 불가능. 회피&middot;우회 경로로 처리</td>
+              </tr>
+              <tr>
+                <td><strong>Lv.1</strong></td>
+                <td>원격 조종</td>
+                <td>관제 인력이 영상/센서를 보며 수동 조종(Joystick 등). 로봇의 안전 기능은 동작</td>
+              </tr>
+              <tr>
+                <td><strong>Lv.2</strong></td>
+                <td>원격 주행</td>
+                <td>로봇이 기본 주행은 수행하나, 관제 인력의 상시 모니터링과 빈번한 개입 필요(1:1 관제 필요)</td>
+              </tr>
+              <tr>
+                <td><strong>Lv.3</strong></td>
+                <td>부분 자율주행</td>
+                <td>정상 시나리오는 자율 주행, 예외/위험 상황만 관제 개입 (Human-in-the-loop), Fleet View로 복수 로봇 관제</td>
+              </tr>
+              <tr>
+                <td><strong>Lv.4</strong></td>
+                <td>고도 자율주행</td>
+                <td>대부분의 상황을 로봇이 스스로 처리(문제 상황 시 알림을 통해 관제 개입), 관제는 사후 확인&middot;통계 관리 중심으로 전환</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="kpi-note">
+          <ul>
+            <li><strong>현재 스펙</strong>: 현 시점(2026-05) 실제 운용 가능한 수준</li>
+            <li><strong>맵리스 주행 목표 스펙</strong>: 사전 매핑 없이 운용할 때의 8월(맵리스 주행 고도화 시점) 목표 수준</li>
+            <li><strong>자율주행 목표 스펙</strong>: 사전 매핑 + 자율주행 KPI 달성(6월) 이후 12월까지의 최종 목표 수준</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="footer">
+    <div class="container">
+      2026 SW 개발 마일스톤 로드맵 (rev2) &middot; 로보티즈AI &middot; Updated 2026-05-15
+    </div>
+  </div>
+
+  <script>
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('section[id]');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 100) current = s.getAttribute('id');
+      });
+      navLinks.forEach(l => {
+        l.classList.remove('active');
+        if (l.getAttribute('href') === '#' + current) l.classList.add('active');
+      });
+    });
+    navLinks.forEach(l => {
+      l.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(l.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
+</body>
+
+</html>
